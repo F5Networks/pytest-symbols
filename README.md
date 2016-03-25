@@ -12,7 +12,7 @@ Overview
 Installation
 ------------
 ```shell
-  $ pip install pytest-symbols
+  $ pip install git+ssh://git@bldr-git.int.lineratesystems.com/tools/pytest-symbols.git
 ```
 
 
