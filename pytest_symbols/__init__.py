@@ -21,4 +21,4 @@ This package provides the 'symbols' pytest plugin.
 """
 
 
-VERSION = "0.1.0-a1"
+VERSION = "0.1.0-a2"

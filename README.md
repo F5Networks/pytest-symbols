@@ -12,7 +12,7 @@ Overview
 Installation
 ------------
 ```shell
-  $ pip install git+ssh://git@bldr-git.int.lineratesystems.com/tools/pytest-symbols.git
+pip install git+ssh://git@bldr-git.int.lineratesystems.com/tools/pytest-symbols.git
 ```
 
 
@@ -21,17 +21,33 @@ Usage
 - use the "--symbols" option to pass symbols into a pytest run:
 
 ```shell
-  $ py.test --symbols tests/demo.json -- tests/demo.py
+py.test --symbols tests/demo.json -- tests/demo.py
 ```
 
-
-- pass the "symbols" fixture to access symbols within a test:
+- use the "symbols" fixture to access symbols within a test:
 
 ```python
-  def test_symbols(self, symbols):
-      print symbols
-      assert symbols.client_ip == "1.1.1.1"
-      assert symbols.server_ip == "2.2.2.2"
+def test_with_symbols_fixture(self, symbols):
+    print symbols
+    assert symbols.client_ip == "1.1.1.1"
+    assert symbols.server_ip == "2.2.2.2"
+```
+
+- use "pytest.symbols" to access symbols outside the "symbols" fixture:
+
+```python
+import pytest
+
+from pytest import symbols as foo
+
+
+def test_without_symbols_fixture(self):
+    print pytest.symbols
+    assert pytest.symbols.client_ip == "1.1.1.1"
+    assert pytest.symbols.server_ip == "2.2.2.2"
+    print foo
+    assert foo.client_ip == "1.1.1.1"
+    assert foo.server_ip == "2.2.2.2"
 ```
 
 
