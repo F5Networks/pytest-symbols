@@ -44,6 +44,11 @@ def pytest_addoption(parser):
 def pytest_configure(config):
     if config.option.symbols:
         config._symbols = models.Symbols(config.option.symbols)
+        pytest.symbols = config._symbols
+
+
+def pytest_namespace():
+    return {'symbols': None}
 
 
 @pytest.fixture(scope="session", autouse=True)

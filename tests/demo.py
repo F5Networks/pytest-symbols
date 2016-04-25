@@ -23,13 +23,20 @@ This module contains tests for the pytest-symbols plugin demo.
 
 import pytest
 
+from pytest import symbols as foo
+
 
 class TestDemo(object):
 
-    def test_dont_use_symbols(self):
-        assert 1 > 0
+    def test_dont_use_symbols_fixture(self):
+        print pytest.symbols
+        assert pytest.symbols.client_ip == "1.1.1.1"
+        assert pytest.symbols.server_ip == "2.2.2.2"
+        print foo
+        assert foo.client_ip == "1.1.1.1"
+        assert foo.server_ip == "2.2.2.2"
 
-    def test_do_use_symbols(self, symbols):
+    def test_do_use_symbols_fixture(self, symbols):
         print symbols
         assert symbols.client_ip == "1.1.1.1"
         assert symbols.server_ip == "2.2.2.2"
