@@ -1,0 +1,7 @@
+{
+  # - this is the client ip
+  "client_ip": "1.1.1.1",
+
+  # - this is the server ip
+  "server_ip": "2.2.2.2"
+}

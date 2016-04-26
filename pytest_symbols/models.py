@@ -23,7 +23,6 @@ This module defines the pytest_symbols object model.
 
 import copy
 import os
-import json
 import yaml
 
 from . import exceptions
@@ -54,15 +53,6 @@ class Symbols(object):
             raise exceptions.SymbolsFileNotFoundError(
                 "Symbols file not found ('%s')." % filepath
             )
-        ext = os.path.splitext(filepath)[-1]
-        valid_exts = [".json", ".js", ".yaml", ".yml"]
-        if ext not in valid_exts:
-            raise exceptions.SymbolsFileFormatError(
-                "Invalid symbols file extension ('%s')." % ext
-            )
         with open(filepath, 'r') as f:
-            if ext in [".json", ".js"]:
-                data = json.load(f)
-            elif ext in [".yaml", ".yml"]:
-                data = yaml.load(f)
+            data = yaml.load(f)
         return data
