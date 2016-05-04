@@ -34,11 +34,6 @@ def pytest_addoption(parser):
         metavar="path",
         help="path for test environment symbols file"
     )
-    parser.addini(
-        "symbols",
-        type="linelist",
-        help="each line specifies the path to a test environment symbols file"
-    )
 
 
 def pytest_configure(config):
