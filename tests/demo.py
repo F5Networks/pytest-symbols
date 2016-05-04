@@ -38,3 +38,10 @@ class TestDemo(object):
         print symbols
         assert symbols.client_ip == "1.1.1.1"
         assert symbols.server_ip == "2.2.2.2"
+
+    def test_use_local_conftest(self, fx_foo):
+        """Access symbols through a local plugin."""
+        print "hello from test_use_local_conftest ..."
+        print pytest.symbols
+        print foo
+        fx_foo
