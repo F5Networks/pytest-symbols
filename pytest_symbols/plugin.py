@@ -36,10 +36,11 @@ def pytest_addoption(parser):
     )
 
 
-def pytest_configure(config):
-    if config.option.symbols:
-        config._symbols = models.Symbols(config.option.symbols)
-        pytest.symbols = config._symbols
+def pytest_load_initial_conftests(early_config, parser, args):
+    options = parser.parse_known_args(args)
+    if options.symbols:
+        early_config._symbols = models.Symbols(options.symbols)
+        pytest.symbols = early_config._symbols
 
 
 def pytest_namespace():
