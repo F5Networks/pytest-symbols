@@ -34,17 +34,13 @@ def pytest_addoption(parser):
         metavar="path",
         help="path for test environment symbols file"
     )
-    parser.addini(
-        "symbols",
-        type="linelist",
-        help="each line specifies the path to a test environment symbols file"
-    )
 
 
-def pytest_configure(config):
-    if config.option.symbols:
-        config._symbols = models.Symbols(config.option.symbols)
-        pytest.symbols = config._symbols
+def pytest_load_initial_conftests(early_config, parser, args):
+    options = parser.parse_known_args(args)
+    if options.symbols:
+        early_config._symbols = models.Symbols(options.symbols)
+        pytest.symbols = early_config._symbols
 
 
 def pytest_namespace():
