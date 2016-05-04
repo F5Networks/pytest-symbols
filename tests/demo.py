@@ -13,12 +13,7 @@
 # limitations under the License.
 
 
-"""
-tests.demo
-~~~~~~~~~~
-This module contains tests for the pytest-symbols plugin demo.
-
-"""
+"""This module contains tests for the pytest-symbols plugin demo."""
 
 
 import pytest
@@ -27,8 +22,10 @@ from pytest import symbols as foo
 
 
 class TestDemo(object):
+    """Sample class-based test suite."""
 
     def test_dont_use_symbols_fixture(self):
+        """Access symbols data outside the symbols fixture."""
         print pytest.symbols
         assert pytest.symbols.client_ip == "1.1.1.1"
         assert pytest.symbols.server_ip == "2.2.2.2"
@@ -37,6 +34,14 @@ class TestDemo(object):
         assert foo.server_ip == "2.2.2.2"
 
     def test_do_use_symbols_fixture(self, symbols):
+        """Access symbols data via the symbols fixture."""
         print symbols
         assert symbols.client_ip == "1.1.1.1"
         assert symbols.server_ip == "2.2.2.2"
+
+    def test_use_local_conftest(self, fx_foo):
+        """Access symbols through a local plugin."""
+        print "hello from test_use_local_conftest ..."
+        print pytest.symbols
+        print foo
+        fx_foo

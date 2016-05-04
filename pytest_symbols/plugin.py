@@ -13,12 +13,7 @@
 # limitations under the License.
 
 
-"""
-pytest_symbols.plugin
-~~~~~~~~~~~~~~~~~~~~~
-This module defines the pytest hooks implemented by pytest_symbols.
-
-"""
+"""This module implements pytest hooks used by the pytest-symbols plugin."""
 
 
 import pytest
@@ -27,6 +22,7 @@ from . import models
 
 
 def pytest_addoption(parser):
+    """Add command line options for the pytest-symbols plugin."""
     group = parser.getgroup("general")
     group.addoption(
         "--symbols",
@@ -37,6 +33,7 @@ def pytest_addoption(parser):
 
 
 def pytest_load_initial_conftests(early_config, parser, args):
+    """Add a private '_symbols' member to the standard 'config' object."""
     options = parser.parse_known_args(args)
     if options.symbols:
         early_config._symbols = models.Symbols(options.symbols)
@@ -44,15 +41,12 @@ def pytest_load_initial_conftests(early_config, parser, args):
 
 
 def pytest_namespace():
+    """Add a 'symbols' object to the pytest namespace."""
     return {'symbols': None}
 
 
 @pytest.fixture(scope="session", autouse=True)
 def symbols(request):
+    """Session-level fixture that returns the 'symbols' object."""
     symbols = getattr(request.config, "_symbols", None)
-
-    def teardown():
-        symbols = None
-
-    request.addfinalizer(teardown)
     return symbols

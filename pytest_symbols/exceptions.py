@@ -13,21 +13,22 @@
 # limitations under the License.
 
 
-"""
-pytest_symbols.exceptions
-~~~~~~~~~~~~~~~~~~~~~~~~~
-This module defines the exceptions used in pytest_symbols.
-
-"""
+"""This module defines the pytest-symbols plugin exceptions."""
 
 
 class SymbolsError(Exception):
     """Base class for pytest_symbols exceptions."""
 
     def __init__(self, msg=None):
+        """Construct the custom error object.
+
+        :param str msg: error message text
+        :return: None
+        """
         self.msg = msg
 
     def __str__(self):
+        """String representation of the custom error object."""
         classname = self.__class__.__name__
         if self.msg:
             return self.msg
