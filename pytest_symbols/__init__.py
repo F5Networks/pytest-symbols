@@ -13,12 +13,7 @@
 # limitations under the License.
 
 
-"""
-pytest_symbols
-~~~~~~~~~~~~~~
-This package provides the 'symbols' pytest plugin.
-
-"""
+"""This package provides the pytest-symbols plugin."""
 
 
 VERSION = "0.1.0-a3"

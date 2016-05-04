@@ -16,12 +16,16 @@
 # limitations under the License.
 
 
+"""This module makes the pytest-symbols plugin pip installable."""
+
+
 from setuptools import setup, find_packages
 
 import pytest_symbols
 
 
 def read(f):
+    """Read contents of specified file."""
     return open(f).read().strip()
 
 

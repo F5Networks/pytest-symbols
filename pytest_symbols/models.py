@@ -13,12 +13,7 @@
 # limitations under the License.
 
 
-"""
-pytest_symbols.models
-~~~~~~~~~~~~~~~~~~~~~
-This module defines the pytest_symbols object model.
-
-"""
+"""This module defines the pytest-symbols plugin object model."""
 
 
 import copy
@@ -29,12 +24,22 @@ from . import exceptions
 
 
 class Symbols(object):
+    """Base class for the pytest-symbols plugin."""
 
     def __init__(self, symbols_file=""):
+        """Construct the symbols object.
+
+        :param str symbols_file: path to the symbols file we want to load
+        :return: None
+        """
         self._symbols_file = symbols_file
         self.load_symbols()
 
     def __str__(self):
+        """String representation of the symbols object (public members only).
+
+        :return: str
+        """
         members = copy.deepcopy(self.__dict__)
         for k in members.keys():
             if k.startswith("_"):
@@ -42,6 +47,10 @@ class Symbols(object):
         return str(members)
 
     def load_symbols(self):
+        """Load symbols from the symbols file.
+
+        :return: None
+        """
         if not self._symbols_file:
             return
         symbols = self._load_symbols_file(self._symbols_file)
