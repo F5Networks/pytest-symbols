@@ -1,6 +1,6 @@
 pytest-symbols
 ==============
-
+[![Build Status](https://travis-ci.org/F5Networks/pytest-symbols.svg?branch=master)](https://travis-ci.org/F5Networks/pytest-symbols)
 
 Overview
 --------
