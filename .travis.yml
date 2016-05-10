@@ -1,0 +1,20 @@
+sudo: false
+language: python
+python:
+    - '2.7'
+    - '2.6'
+    - "3.2"
+    - "3.3"
+    - "3.4"
+    - "3.5"
+before_install:
+    - git config --global user.email "qetools@f5.com"
+    - git config --global user.name "Travis F5 QE Tools"
+    - git fetch --depth=100
+install:
+    - pip install -r requirements_test.txt
+script:
+    - flake8 --max-complexity=10 .
+    - pep257 .
+    - py.test --cov test/test_pytest_symbols
+    - python setup.py sdist

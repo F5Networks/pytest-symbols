@@ -1,0 +1,6 @@
+-e .
+
+flake8
+pep257
+pytest
+pytest-cov
