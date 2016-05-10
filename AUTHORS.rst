@@ -5,4 +5,5 @@ Maintainers
 
 Contributors
 ------------
-- ...
+- Shawn Wormke <shawn@f5.com> `@swormke <https://github.com/swormke>`_
+

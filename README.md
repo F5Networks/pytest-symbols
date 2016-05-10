@@ -12,7 +12,7 @@ Overview
 Installation
 ------------
 ```shell
-pip install git+ssh://git@bldr-git.int.lineratesystems.com/tools/pytest-symbols.git
+pip install https://github.com/F5Networks/pytest-symbols.git
 ```
 
 
@@ -29,8 +29,8 @@ py.test --symbols tests/demo.json -- tests/demo.py
 ```python
 def test_with_symbols_fixture(self, symbols):
     print symbols
-    assert symbols.client_ip == "1.1.1.1"
-    assert symbols.server_ip == "2.2.2.2"
+    assert symbols.client_ip == "192.168.1.1"
+    assert symbols.server_ip == "192.168.2.1"
 ```
 
 - use "pytest.symbols" to access symbols outside the "symbols" fixture:
@@ -43,11 +43,11 @@ from pytest import symbols as foo
 
 def test_without_symbols_fixture(self):
     print pytest.symbols
-    assert pytest.symbols.client_ip == "1.1.1.1"
-    assert pytest.symbols.server_ip == "2.2.2.2"
+    assert symbols.client_ip == "192.168.1.1"
+    assert symbols.server_ip == "192.168.2.1"    
     print foo
-    assert foo.client_ip == "1.1.1.1"
-    assert foo.server_ip == "2.2.2.2"
+    assert foo.client_ip == "192.168.1.1"
+    assert foo.server_ip == "192.168.2.1"
 ```
 
 
@@ -76,10 +76,20 @@ Contact
 qetools@f5.com
 
 
+Support
+-------
+See [Support](SUPPORT.rst)
+
 Copyright
 ---------
 Copyright 2016 F5 Networks Inc.
 
+Contributor License Agreement
+-----------------------------
+Individuals or business entities who contribute to this project must have
+completed and submitted the [F5 Contributor License Agreement](http://f5-openstack-docs.readthedocs.org/en/latest/cla_landing.html)
+to Openstack_CLA@f5.com prior to their code submission being included in this
+project.
 
 License
 -------
