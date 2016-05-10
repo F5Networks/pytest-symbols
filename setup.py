@@ -39,7 +39,7 @@ setup(
     long_description=read("README.md"),
     author="F5 Networks",
     author_email="qetools@f5.com",
-    url="https://github.com/F5Networks/pytest_symbols",
+    url="https://github.com/F5Networks/pytest-symbols",
     keywords=["F5", "testing"],
     license="Apache License, Version 2.0",
     packages=find_packages(exclude=["tests", "docs"]),
