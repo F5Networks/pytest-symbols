@@ -36,7 +36,7 @@ setup(
         "pytest-symbols is a pytest plugin that adds support for passing "
         "test environment symbols into pytest tests."
     ),
-    long_description=read("README.md"),
+    long_description=read("README.rst"),
     author="F5 Networks",
     author_email="qetools@f5.com",
     url="https://github.com/F5Networks/pytest-symbols",
