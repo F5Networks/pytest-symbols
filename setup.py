@@ -43,7 +43,7 @@ setup(
     keywords=["F5", "testing"],
     license="Apache License, Version 2.0",
     packages=find_packages(exclude=["tests", "docs"]),
-    install_requires=["PyYAML>=3,<4"],
+    install_requires=["PyYAML>5"],
     entry_points={
         'pytest11': ["symbols = pytest_symbols.plugin"]
     },
